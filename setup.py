@@ -6,11 +6,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="llmeval",
-    version="0.1.1",
+    name="llmeval-sdk",
+    version="0.1.5",
     author="RGGH",
-    author_email="iwalker147@.com",
-    description="Python SDK for the evaluAte LLM evaluation framework",
+    author_email="iwalker147@gmail.com",
+    description="Python SDK for the evaluate LLM evaluation framework",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/RGGH/llmeval",

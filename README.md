@@ -1,6 +1,7 @@
-# llmeval - Python SDK for evaluAte
+# llmeval - Python SDK for evaluate
+## download the evaluate server from https://github.com/RGGH/evaluate
 
-A Python client library for the evaluAte LLM evaluation framework.
+A Python client library for the evaluate LLM evaluation framework.
 
 ## Installation
 
@@ -31,10 +32,10 @@ print(f"Available models: {models}")
 
 # Run a single evaluation
 result = client.run_eval(
-    model="anthropic:claude-sonnet-4",
+    model="gemini:gemini-2.5-pro",
     prompt="What is the capital of France?",
     expected="Paris",
-    judge_model="gemini:gemini-1.5-pro"
+    judge_model="gemini:gemini-2.5-pro"
 )
 
 print(f"Model output: {result.model_output}")

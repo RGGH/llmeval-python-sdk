@@ -5,6 +5,10 @@ A Python client library for the evaluate LLM evaluation framework.
 
 ## Installation
 
+```
+pip install llmeval-sdk
+```
+
 ```bash
 pip install -e .
 ```

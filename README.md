@@ -60,11 +60,7 @@ print(f"Passed: {result.passed}")
 
 ## Documentation
 
-See the `examples/` directory for more usage examples:
-- `basic_usage.py` - Simple examples
-- `advanced_usage.py` - Advanced patterns
-- `streaming_example.py` - WebSocket streaming
-- `jupyter_example.ipynb` - Jupyter notebook
+https://github.com/RGGH/llmeval-python-sdk/blob/main/examples/evaluate.ipynb
 
 ## Requirements
 

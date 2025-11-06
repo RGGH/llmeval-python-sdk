@@ -12,6 +12,10 @@ from .models import (
     ExperimentResponse,
     HistoryResponse,
     ModelsResponse,
+    CreateJudgePromptRequest,
+    JudgePrompt,
+    JudgePromptsResponse,
+    SetActiveJudgePromptRequest,
 )
 from .exceptions import APIError, ConnectionError, EvalError
 
@@ -161,6 +165,58 @@ class EvalClient:
     def get_experiment(self, experiment_id: str) -> Dict[str, Any]:
         """Get experiment details."""
         response = self._make_request("GET", f"experiments/{experiment_id}")
+        return response.json()
+
+    def get_judge_prompts(self) -> List[JudgePrompt]:
+        """Get all judge prompt versions."""
+        response = self._make_request("GET", "judge-prompts")
+        return JudgePromptsResponse(**response.json()).prompts
+
+    def get_active_judge_prompt(self) -> JudgePrompt:
+        """Get the currently active judge prompt."""
+        response = self._make_request("GET", "judge-prompts/active")
+        return JudgePrompt(**response.json().get("prompt", response.json()))
+
+    def get_judge_prompt_by_version(self, version: int) -> JudgePrompt:
+        """Get a specific judge prompt by version."""
+        response = self._make_request("GET", f"judge-prompts/{version}")
+        return JudgePrompt(**response.json().get("prompt", response.json()))
+
+    def create_judge_prompt(
+        self,
+        name: str,
+        template: str,
+        description: Optional[str] = None,
+        set_active: bool = False,
+    ) -> JudgePrompt:
+        """
+        Create a new judge prompt version.
+
+        Args:
+            name: A name for the prompt.
+            template: The prompt template string.
+            description: An optional description.
+            set_active: Whether to set this prompt as active upon creation.
+
+        Returns:
+            The created JudgePrompt object.
+        """
+        request = CreateJudgePromptRequest(
+            name=name,
+            template=template,
+            description=description,
+            set_active=set_active,
+        )
+        response = self._make_request(
+            "POST", "judge-prompts", json=request.dict(exclude_none=True)
+        )
+        data = response.json()
+        return JudgePrompt(**data.get("prompt", data))
+
+    def set_active_judge_prompt(self, version: int) -> Dict[str, Any]:
+        """Set a judge prompt version as active."""
+        request = SetActiveJudgePromptRequest(version=version)
+        response = self._make_request("PUT", "judge-prompts/active", json=request.dict())
         return response.json()
 
     def stream_evals(

@@ -149,3 +149,31 @@ class ModelsResponse(BaseModel):
     """Response containing available models."""
     
     models: List[str]
+
+
+class CreateJudgePromptRequest(BaseModel):
+    """Request model for creating a new judge prompt."""
+    name: str
+    template: str
+    description: Optional[str] = None
+    set_active: bool = False
+
+
+class JudgePrompt(BaseModel):
+    """Data model for a judge prompt."""
+    version: int
+    name: str
+    template: str
+    description: Optional[str] = None
+    created_at: str
+    is_active: bool
+
+
+class JudgePromptsResponse(BaseModel):
+    """Response containing a list of judge prompts."""
+    prompts: List[JudgePrompt]
+
+
+class SetActiveJudgePromptRequest(BaseModel):
+    """Request model for setting the active judge prompt."""
+    version: int

@@ -222,6 +222,80 @@ if __name__ == "__main__":
 
 ```
 
+```bash
+❯ uv run --active examples/basic_usage.py
+Server health: {'service': 'eval-api', 'status': 'healthy', 'version': '0.1.5'}
+
+Available models: ['anthropic:claude-opus-4', 'anthropic:claude-sonnet-4', 'anthropic:claude-sonnet-4-5', 'anthropic:claude-haiku-4', 'gemini:gemini-2.5-pro', 'gemini:gemini-2.5-flash', 'ollama:llama3', 'ollama:gemma', 'openai:gpt-4o', 'openai:gpt-4o-mini', 'openai:gpt-3.5-turbo']
+
+============================================================
+Running single evaluation...
+============================================================
+
+Model: gemini:gemini-2.5-flash
+Prompt: What is the capital of France?
+Output: The capital of France is **Paris**.
+Expected: Paris
+Judge Verdict: Pass
+Passed: True
+Latency: 484ms
+
+============================================================
+Running batch evaluations...
+============================================================
+
+Batch evaluation started with ID: 28bddffc-9940-4127-92d6-d4d8f1ba24b9
+Waiting for batch to complete...
+  ... 2/2 evals completed.
+
+Batch evaluation finished!
+Total: 2
+Passed: 2
+Failed: 0
+Pass Rate: 100.00%
+
+============================================================
+Managing Judge Prompts...
+============================================================
+
+Creating a new judge prompt...
+Successfully created and activated prompt version: 21
+
+Fetching active judge prompt...
+Active prompt version: 21 (Name: Concise Evaluator)
+
+Listing all judge prompts...
+  - Version 21: Concise Evaluator (active)
+  - Version 20: Strict Evaluator v2 
+  - Version 19: Concise Evaluator 
+  - Version 18: Strict Evaluator v2 
+  - Version 17: Concise Evaluator 
+  - Version 16: Strict Evaluator v2 
+  - Version 15: Concise Evaluator 
+  - Version 14: Strict Evaluator v2 
+  - Version 13: Concise Evaluator 
+  - Version 12: Strict Evaluator v2 
+  - Version 11: Concise Evaluator 
+  - Version 10: Strict Evaluator v2 
+  - Version 9: Concise Evaluator 
+  - Version 8: Concise Evaluator 
+  - Version 7: Concise Evaluator 
+  - Version 6: Concise Evaluator 
+  - Version 5: Minimal Prompt 
+  - Version 4: Lenient Evaluation 
+  - Version 3: Strict Evaluation 
+  - Version 2: Test Prompt 
+  - Version 1: Default Judge Prompt 
+
+Creating another judge prompt...
+Successfully created prompt version: 22
+
+Setting version 22 as active...
+Successfully set new active version.
+New active prompt version: 22 (Name: Strict Evaluator v2)
+
+```
+
 ## Features
 
 - ✅ Simple, intuitive API

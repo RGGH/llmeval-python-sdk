@@ -221,6 +221,7 @@ if __name__ == "__main__":
 
 
 ```
+## Example output (from the example above)
 
 ```bash
 ❯ uv run --active examples/basic_usage.py

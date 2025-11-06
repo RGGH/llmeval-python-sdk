@@ -1,3 +1,5 @@
+<img width="250" height="250" alt="evaluate" src="https://github.com/user-attachments/assets/3071efa3-d512-43ae-8dfb-adfa292c61e0" />
+
 # llmeval - Python SDK for evaluate
 ## download the evaluate server from https://github.com/RGGH/evaluate
 
